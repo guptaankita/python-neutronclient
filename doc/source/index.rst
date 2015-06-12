@@ -15,6 +15,75 @@ In order to use the python neutron client directly, you must first obtain an aut
     >>> network_id = networks['networks'][0]['id']
     >>> neutron.delete_network(network_id)
 
+Python Client API Operations
+============================
+List network::
+
+	list_networks(retrieve_all=True, \**kwargs)
+	Returns a list of networks that tenant has access to.
+	Parameters: **retrieve_all** (optional)
+
+Show network::
+
+	show_network(network,\**kwargs)
+	Returns data about the network specified
+	Parameter : **network** -  the  ID of the network to be shown
+	
+Create network::
+
+	body = {"network":
+	{"name" : "my_network"}
+	}
+	create_network(body=body)
+	Creates a new neutron network with the body specified
+	Parameter: **body** – the name and and admin_state_up for the network
+
+Update network::
+
+	body = {"network":
+	{"name" : "updated_name"}
+	}
+	update_network(network, body=body)
+	Updates some attributes of the network object
+	Parameter : **network** -  the ID of the network that is to be updated
+		        **body**    -  specify the updated information here	
+
+Delete network::
+
+	delete_network(network)
+	Remove the neutron network and all its associated subnets
+	Parameter : **network** -  the  ID of the network to be deleted
+
+List subnets::
+
+	list_subnets(retrieve_all=True, \**kwargs)	
+	Returns a list of subnet objects that tenant has access to
+	Parameters: **retrieve_all** (optional)
+
+Show subnet::
+
+	show_subnet(subnet, \**kwargs)
+	Returns data about the subnet specified
+	Parameter : **subnet** -  the  ID of the subnet to be shown
+	
+Create subnet::
+
+	body = { "subnet": {
+    "network_id": "ed2e3c10-2e43-4297-9006-2863a2d1abbc",
+    "ip_version": 4,
+    "cidr": "10.0.3.0/24",
+    "allocation_pools": [{"start": "10.0.3.20", "end": "10.0.3.150"}]
+				}
+	}
+	create_subnet(body=body)
+	Creates a new subnet on a specific network. Network_id is mandantory in the body
+	Parameter: **body** – parameters to create a new subnet
+
+Delete subnet::
+
+	delete_subnet(subnet)
+	Remove the specified subnets
+	Parameter : **subnet** -  the  ID of the subnet to be deleted
 
 Command-line Tool
 =================
