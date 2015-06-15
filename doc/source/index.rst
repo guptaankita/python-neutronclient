@@ -76,7 +76,7 @@ Create subnet::
 		}
 	}
 	create_subnet(body=body)
-	Creates a new subnet on a specific network. Network_id is mandantory in the body
+	Creates a new subnet on a specific network. Network_id is mandatory in the body
 	Parameter: **body** – parameters to create a new subnet
 
 Delete subnet::
@@ -107,6 +107,28 @@ Create port::
         "network_id": "6aeaf34a-c482-4bd3-9dc3-7faf36412f12"
 		}
 	}
+	create_port(body=body)
+	Creates a new neutron port. Network_id is mandatory in the body
+	Parameter: **body** – parameters to create a new port
+	
+Update port::
+
+	body = {
+    "port": {
+        "device_id": "37b4f622-5e17-4dca-bf67-7338c5b7dd63"
+		}
+	}
+	update_port(port, body=body)
+	Updates some attributes of the port object
+	Parameter: **port** -  the ID of the port that is to be updated
+			   **body** -  specify the updated information here	
+
+Delete port:
+
+	delete_port(port)
+	Removes a port from a neutron network
+	Parameter: **port** -  the  ID of the port to be deleted
+	
 Command-line Tool
 =================
 In order to use the CLI, you must provide your OpenStack username, password, tenant, and auth endpoint. Use the corresponding configuration options (``--os-username``, ``--os-password``, ``--os-tenant-name``, and ``--os-auth-url``) or set them in environment variables::
