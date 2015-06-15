@@ -73,7 +73,7 @@ Create subnet::
     "ip_version": 4,
     "cidr": "10.0.3.0/24",
     "allocation_pools": [{"start": "10.0.3.20", "end": "10.0.3.150"}]
-				}
+		}
 	}
 	create_subnet(body=body)
 	Creates a new subnet on a specific network. Network_id is mandantory in the body
@@ -85,6 +85,28 @@ Delete subnet::
 	Remove the specified subnets
 	Parameter : **subnet** -  the  ID of the subnet to be deleted
 
+List ports::
+
+	list_ports(retrieve_all=True, \**kwargs)
+	Returns a list of port objects that tenant has access to
+	Parameters: **retrieve_all** (optional)
+	
+Show port::
+
+	show_port(port,\**kwargs)
+	Returns the information regarding the port specified in the request.
+	Parameters: **port** - the port whose information is required
+	
+Create port::
+
+	body = {
+    "port": {
+        "admin_state_up": true,
+        "device_id": "d6b4d3a5-c700-476f-b609-1493dd9dadc0",
+        "name": "port1",
+        "network_id": "6aeaf34a-c482-4bd3-9dc3-7faf36412f12"
+		}
+	}
 Command-line Tool
 =================
 In order to use the CLI, you must provide your OpenStack username, password, tenant, and auth endpoint. Use the corresponding configuration options (``--os-username``, ``--os-password``, ``--os-tenant-name``, and ``--os-auth-url``) or set them in environment variables::
